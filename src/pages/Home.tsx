@@ -1,4 +1,5 @@
-import React, { useReducer, useState } from "react";
+import React, { useContext, useReducer, useState } from "react";
+import {StyleContext} from '../contexts/StyleProvider'
 
 type nameInfo = {
     name: string
@@ -31,6 +32,8 @@ const reducer = (state:counterState,action:counterAction) => {
     
 }
 const Home = ({ name, message, isValid }: nameInfo) => {
+    const info = useContext(StyleContext)
+    console.log(info);
    const [state,dispatch]=useReducer(reducer,initialValue)
     return (
         <div>
