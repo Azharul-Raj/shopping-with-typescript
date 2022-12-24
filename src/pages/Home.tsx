@@ -1,9 +1,13 @@
 import React from 'react';
+type nameInfo = {
+    name:string
+}
 
-const Home = () => {
+const Home = (props:nameInfo) => {
+    console.log(props);
     return (
         <div>
-            
+           Hey {props.name} Welcome to TYPESCRIPT!!
         </div>
     );
 };
