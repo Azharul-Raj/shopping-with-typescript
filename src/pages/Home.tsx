@@ -1,13 +1,18 @@
 import React from 'react';
 type nameInfo = {
-    name:string
+    name: string
+    message: string
+    isValid:boolean
 }
 
 const Home = (props:nameInfo) => {
-    console.log(props);
     return (
         <div>
-           Hey {props.name} Welcome to TYPESCRIPT!!
+            Hey {props.name} Welcome to TYPESCRIPT!!
+            You have a happy {props.message}
+            {
+                props.isValid?'User is Valid':'Invalid User'
+            }
         </div>
     );
 };
