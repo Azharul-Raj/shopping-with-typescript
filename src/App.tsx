@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="">
-      <Home name='Raj' message='Good Morning' isValid={ true} />
+      <Home name='Raj' isValid={ true} />
     </div>
   )
 }

@@ -1,18 +1,19 @@
-import React from 'react';
+import { useState } from "react";
+
 type nameInfo = {
     name: string
-    message: string
+    message?: string
     isValid:boolean
 }
 
-const Home = (props:nameInfo) => {
+const Home = ({ name, message, isValid }: nameInfo) => {
+    const [count,setCount]=useState<number>(0)
     return (
         <div>
-            Hey {props.name} Welcome to TYPESCRIPT!!
-            You have a happy {props.message}
-            {
-                props.isValid?'User is Valid':'Invalid User'
-            }
+            <h2>{ count}</h2>
+            <div className="">
+                <button onClick={()=>setCount(prev=>prev+1)} className="btn">Inc</button>
+            </div>
         </div>
     );
 };
