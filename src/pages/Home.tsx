@@ -1,25 +1,44 @@
-import { useReducer, useState } from "react";
+import React, { useReducer, useState } from "react";
 
 type nameInfo = {
     name: string
     message?: string
     isValid:boolean
 }
-type value = {
+type counterState= {
     count:number
 }
+type updateAction = {
+    type: 'INC' | 'DEC'
+    payload:number
+}
+type resetAction = {
+    type:'RESET'
+}
+type counterAction = updateAction | resetAction
 
-const Home = ({ name, message, isValid }: nameInfo) => {
-    const initialValue : value = { count: 0 }
-    const reducer = (state,action) => {
-        
+const initialValue = { count: 0 }
+const reducer = (state:counterState,action:counterAction) => {
+    switch (action.type) {
+        case 'INC':
+            return { count: state.count + action.payload };
+        case 'DEC':
+            return { count: state.count - action.payload };
+        case 'RESET': return initialValue;
+        default:
+            return state;
     }
+    
+}
+const Home = ({ name, message, isValid }: nameInfo) => {
    const [state,dispatch]=useReducer(reducer,initialValue)
     return (
         <div>
-            <h2>{}</h2>
+            <h2>{state.count}</h2>
             <div className="">
-                <button onClick={()=>{}} className="btn">Inc</button>
+                <button onClick={()=>dispatch({type:'INC', payload:5})} className="btn">Inc by 5</button>
+                <button onClick={()=>dispatch({type:'DEC', payload:3})} className="btn">Dec by 3</button>
+                <button onClick={()=>dispatch({type:'RESET'})} className="btn">Reset</button>
             </div>
         </div>
     );
