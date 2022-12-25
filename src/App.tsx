@@ -6,14 +6,17 @@ import { Route } from 'react-router'
 import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
-import { Button } from './pages/Button'
+import List from './pages/List'
 
 function App() {
 
+  const handleClick = () => {
+    console.log('clicked');
+}
   return (
     <div className="">
       <Home />
-      <Button variant='secondary'/>
+      <List/>
     </div>
   )
 }
