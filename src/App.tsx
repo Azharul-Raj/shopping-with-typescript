@@ -6,12 +6,14 @@ import { Route } from 'react-router'
 import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import Toast from './pages/Toast'
 
 function App() {
 
   return (
     <div className="">
-      <Home name='Raj' isValid={ true} />
+      <Home />
+      <Toast position='left-center'/>
     </div>
   )
 }
