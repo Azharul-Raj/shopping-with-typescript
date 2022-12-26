@@ -10,8 +10,15 @@ export const Style = {
     }
 }
 
-export type Todos = {
+export type Todo = {
     id: number
     todo: string
+    isComplete:boolean
+}
+export type Todos = {
+    // todos: string[] | {id:number,todo:string,isComplete:boolean}
+    id: number
+    todo: string
+    t?:string
     isComplete:boolean
 }

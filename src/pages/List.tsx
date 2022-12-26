@@ -19,7 +19,7 @@ const List = ({value,setValue,handleSubmit,todos}:ListTypeProps) => {
                 </form>
                 <div className="">
                     {
-                        todos?.map(t => <SingleTodo t={ t} />)
+                        todos?.map(todo => <SingleTodo todo={ todo} key={todo.id} />)
                     }
                 </div>
             </div>
