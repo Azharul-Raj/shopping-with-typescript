@@ -12,6 +12,10 @@ function App() {
   const [todos,setTodos]=useState<Array<Todo>>([])
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
+    if (!value) {
+      alert('Please Write something')
+      return
+    }
     setTodos([...todos, { id: Date.now(), todo: value, isComplete: false }])
     setValue('')
   }

@@ -12,13 +12,13 @@ const List = ({value,setValue,handleSubmit,todos,setTodos}:ListTypeProps) => {
     
     return (
         <div>
-            <h2>TODO LIST</h2>
+            <h2 className="text-center font-bold my-4 text-5xl">TODO LIST</h2>
             <div className="">
                 <form onSubmit={handleSubmit} action="" className="flex justify-center items-center relative">
                 <input onChange={(e)=>setValue(e.target.value)} value={value} className='p-3 bg-gray-600 text-white focus:border-gray-800 active:border-red-500 rounded-3xl w-11/12' type="text" name="" id="" />
-                    <button className='btn rounded-full absolute right-10' type='submit'>Go</button>
+                    <button className='btn rounded-full absolute right-4 lg:right-10' type='submit'>Go</button>
                 </form>
-                <div className="">
+                <div className="mt-5">
                     {
                         todos?.map(todo => <SingleTodo todo={ todo} key={todo.id} todos={todos} setTodos={setTodos}  />)
                     }
