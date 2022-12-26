@@ -12,9 +12,9 @@ function App() {
   const [todos,setTodos]=useState<Todos[]>([])
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-    setTodos([...todos,{id:Date.now(),todo:value,isComplete:false}])
+    setTodos([...todos, { id: Date.now(), todo: value, isComplete: false }])
+    setValue('')
   }
-console.log(todos);
   return (
     <div className="">
       <Home />
