@@ -2,6 +2,7 @@ import { Todo } from "./Style";
 
 import { ImCross } from "react-icons/im";
 import { FaEdit } from "react-icons/fa";
+import { useState } from "react";
 
 type SingleTodoType = {
   todo: Todo;
@@ -10,17 +11,25 @@ type SingleTodoType = {
 };
 
 const SingleTodo = ({ setTodos, todo, todos }: SingleTodoType) => {
+  const [edit, setEdit] = useState<boolean>(false);
+  const [editTodo, setEditTodo] = useState(todo.todo);
   // todo delete functions here
     const handleDelete = (id: number) => {
         setTodos(todos.filter(todo=>todo.id!==id))
   }
   // todo edit function here
   const handleEdit = ( id:number) => {
-    
+    if (!edit && !todo.isComplete) {
+      setEdit(!edit)
+    }
+  }
+  // handle update function here
+  const handleUpdate = (e:React.FormEvent<EventTarget>) => {
+    e.preventDefault()
   }
   return (
     <div className="flex justify-center items-center">
-      <form className="w-10/12" action="">
+      <form className="w-10/12" action="" onSubmit={(e)=>handleUpdate(e)}>
         <div
           id="alert-border-4"
           className="flex p-4 mb-4 justify-between bg-yellow-100 border-t-4 border-yellow-500 dark:bg-yellow-200"
@@ -38,9 +47,12 @@ const SingleTodo = ({ setTodos, todo, todos }: SingleTodoType) => {
               clip-rule="evenodd"
             ></path>
           </svg>
-          <div className="ml-3 text-sm font-medium text-yellow-700">
-            {todo.id}
-                  </div>
+          {edit ?
+            <input className="bg-white border-none text-black" type="text" value={editTodo} onChange={(e)=>setEditTodo(e.target.value)} />
+          :
+            <div className="ml-3 text-sm font-medium text-yellow-700">
+            {todo.todo}
+                  </div>}
                   <div className="space-x-5">
             <button
               onClick={()=>handleEdit(todo.id)}
