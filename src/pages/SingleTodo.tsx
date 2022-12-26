@@ -13,13 +13,12 @@ type SingleTodoType = {
 const SingleTodo = ({ setTodos, todo, todos }: SingleTodoType) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [editTodo, setEditTodo] = useState(todo.todo);
-  const [done, setDone] = useState(true);
   // todo delete functions here
   const handleDelete = (id: number) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
   // todo edit function here
-  const handleEdit = (id: number) => {
+  const handleEdit = () => {
     if (!edit && !todo.isComplete) {
       setEdit(!edit);
     }
@@ -27,8 +26,13 @@ const SingleTodo = ({ setTodos, todo, todos }: SingleTodoType) => {
   // handle update function here
   const handleUpdate = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
+    if(editTodo){
     todo.todo = editTodo;
-    setEdit(!edit);
+      setEdit(!edit);
+    }
+    else {
+      alert(`Changes data can't be nothing`)
+    }
   };
   return (
     <div className="flex justify-center items-center">
@@ -64,7 +68,7 @@ const SingleTodo = ({ setTodos, todo, todos }: SingleTodoType) => {
           )}
           <div className="space-x-5">
             <button
-              onClick={() => handleEdit(todo.id)}
+              onClick={() => handleEdit()}
               type="button"
               className="ml-auto -mx-1.5 -my-1.5 bg-yellow-100 dark:bg-yellow-200 text-gray-500 rounded-lg focus:ring-2 focus:ring-yellow-400 p-1.5 hover:bg-yellow-200 dark:hover:bg-yellow-300 inline-flex h-8 w-8"
               data-dismiss-target="#alert-border-4"
