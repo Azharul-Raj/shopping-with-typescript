@@ -1,8 +1,8 @@
 import { Todo } from "./Style";
-
 import { ImCross } from "react-icons/im";
 import { FaEdit } from "react-icons/fa";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import {useRef} from 'react'
 
 type SingleTodoType = {
   todo: Todo;
@@ -30,6 +30,10 @@ const SingleTodo = ({ setTodos, todo, todos }: SingleTodoType) => {
     todo.todo = editTodo;
     setEdit(!edit);
   };
+  const inputRef = useRef<HTMLInputElement>(null)
+  useEffect(() => {
+    inputRef.current?.focus()
+  },[edit])
   return (
     <div className="flex justify-center items-center">
       <form className="w-10/12" action="" onSubmit={(e) => handleUpdate(e)}>
@@ -52,6 +56,7 @@ const SingleTodo = ({ setTodos, todo, todos }: SingleTodoType) => {
           </svg>
           {edit ? (
             <input
+              ref={inputRef}
               className="bg-white border-none text-black"
               type="text"
               value={editTodo}
