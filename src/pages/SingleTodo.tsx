@@ -1,7 +1,12 @@
-import React from 'react';
-import {Todo} from './Style';
+import { Todo, Todos } from "./Style";
 
-const SingleTodo = (t) => {
+type SingleTodoType = {
+    todo: Todo
+    todos: Array<Todo>
+    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
+}
+
+const SingleTodo = (todo:SingleTodoType) => {
     return (
         <div className='flex justify-center items-center'>
             <form className='w-10/12' action="">

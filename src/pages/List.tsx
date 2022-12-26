@@ -1,13 +1,14 @@
 import SingleTodo from "./SingleTodo";
-import { Todos } from "./Style";
+import { Todo } from "./Style";
 
 type ListTypeProps = {
     value: string;
     setValue: React.Dispatch<React.SetStateAction<string>>;
     handleSubmit: (e: React.FormEvent<EventTarget>) => void;
-    todos:Todos[]
+    todos: Array<Todo>
+    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 }
-const List = ({value,setValue,handleSubmit,todos}:ListTypeProps) => {
+const List = ({value,setValue,handleSubmit,todos,setTodos}:ListTypeProps) => {
     
     return (
         <div>
@@ -19,7 +20,7 @@ const List = ({value,setValue,handleSubmit,todos}:ListTypeProps) => {
                 </form>
                 <div className="">
                     {
-                        todos?.map(todo => <SingleTodo todo={ todo} key={todo.id} />)
+                        todos?.map(todo => <SingleTodo todo={ todo} key={todo.id} todos={todos} setTodos={setTodos}  />)
                     }
                 </div>
             </div>

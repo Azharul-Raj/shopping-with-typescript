@@ -5,11 +5,11 @@ import Home from './pages/Home';
 import About from './pages/About'
 import Contact from './pages/Contact'
 import List from './pages/List'
-import { Todos } from './pages/Style';
+import { Todo, Todos } from './pages/Style';
 
 function App() {
   const [value, setValue] = useState('');
-  const [todos,setTodos]=useState<Todos[]>([])
+  const [todos,setTodos]=useState<Array<Todo>>([])
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
     setTodos([...todos, { id: Date.now(), todo: value, isComplete: false }])
@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="">
       <Home />
-      <List value={ value} setValue={setValue} handleSubmit={handleSubmit} todos={todos} />
+      <List value={ value} setValue={setValue} handleSubmit={handleSubmit} todos={todos} setTodos={setTodos} />
     </div>
   )
 }

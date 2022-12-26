@@ -18,7 +18,7 @@ export type Todo = {
 export type Todos = {
     // todos: string[] | {id:number,todo:string,isComplete:boolean}
     id: number
-    todo: string
-    t?:string
+    todo:string
+    todos: string[]
     isComplete:boolean
 }
