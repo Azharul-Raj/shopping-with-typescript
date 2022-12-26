@@ -1,3 +1,4 @@
+import SingleTodo from "./SingleTodo";
 import { Todos } from "./Style";
 
 type ListTypeProps = {
@@ -18,7 +19,7 @@ const List = ({value,setValue,handleSubmit,todos}:ListTypeProps) => {
                 </form>
                 <div className="">
                     {
-                        todos?.map(t => <li key={t.id}>{ t.todo}</li>)
+                        todos?.map(t => <SingleTodo t={ t} />)
                     }
                 </div>
             </div>
