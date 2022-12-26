@@ -9,3 +9,9 @@ export const Style = {
         secondary:'#DE3E5F'
     }
 }
+
+export type Todos = {
+    id: number
+    todo: string
+    isComplete:boolean
+}
